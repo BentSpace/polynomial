@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F17357B1CBEF3DA0036673B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F17357A1CBEF3DA0036673B /* main.cpp */; };
+		4F17357B1CBEF3DA0036673B /* driver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F17357A1CBEF3DA0036673B /* driver.cpp */; };
+		4F1735841CC168C60036673B /* polynomial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4F1735831CC168C60036673B /* polynomial.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +25,10 @@
 
 /* Begin PBXFileReference section */
 		4F1735771CBEF3DA0036673B /* polynomial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = polynomial; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F17357A1CBEF3DA0036673B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4F17357A1CBEF3DA0036673B /* driver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = driver.cpp; sourceTree = "<group>"; };
+		4F1735811CC1668E0036673B /* general.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = general.hpp; sourceTree = "<group>"; };
+		4F1735821CC168A10036673B /* polynomial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = polynomial.hpp; sourceTree = "<group>"; };
+		4F1735831CC168C60036673B /* polynomial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polynomial.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +61,10 @@
 		4F1735791CBEF3DA0036673B /* polynomial */ = {
 			isa = PBXGroup;
 			children = (
-				4F17357A1CBEF3DA0036673B /* main.cpp */,
+				4F17357A1CBEF3DA0036673B /* driver.cpp */,
+				4F1735811CC1668E0036673B /* general.hpp */,
+				4F1735821CC168A10036673B /* polynomial.hpp */,
+				4F1735831CC168C60036673B /* polynomial.cpp */,
 			);
 			path = polynomial;
 			sourceTree = "<group>";
@@ -118,7 +125,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F17357B1CBEF3DA0036673B /* main.cpp in Sources */,
+				4F17357B1CBEF3DA0036673B /* driver.cpp in Sources */,
+				4F1735841CC168C60036673B /* polynomial.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
