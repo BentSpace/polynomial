@@ -37,8 +37,10 @@
 
 int main() {
     
-    Polynomial myPolynomial(1,2,3,4,5,6);
+    Polynomial myPolynomial(-1,0,0,4,-5,6);
     Polynomial myPolynomial2;
     myPolynomial2 = myPolynomial;
+    //cout << "⁵⁴³²";
+    cout << myPolynomial2;
     return 0;
 }

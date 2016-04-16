@@ -37,14 +37,21 @@
 using std::cout;
 using std::endl;
 
+class Polynomial;
+
+// Overloaded << operator
+std::ostream &operator << (std::ostream &, const Polynomial &);
+
+static const int NUM_COEFFICIENTS = 6;
+
 class Polynomial
 {
 public:// Everything following this is visible from the outside
-    static const int NUM_COEFFICIENTS = 6;
     
     // Constructor(s)
         // Default constructor
     Polynomial();
+        // Overloaded constructor
     Polynomial(long long, long long, long long, long long, long long, long long);
         // Copy constructor
     Polynomial(const Polynomial &);
@@ -54,7 +61,11 @@ public:// Everything following this is visible from the outside
     
     // Overloaded = operator
     void operator=(const Polynomial &);
-
+    
+    // Friends
+    friend std::ostream &operator << (std::ostream &, const Polynomial &);
+    
+    
 private:
 
     long long coefficents[NUM_COEFFICIENTS];

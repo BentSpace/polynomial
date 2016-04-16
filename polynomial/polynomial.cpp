@@ -31,6 +31,9 @@
 
 #include "polynomial.hpp"
 #include "general.hpp"
+#include <iostream>
+#include <string>
+#include <cmath>
 
 // Default Constructor
 Polynomial::Polynomial()
@@ -77,4 +80,52 @@ void Polynomial::operator=(const Polynomial &right)
     {
         coefficents[i] = right.coefficents[i];
     }
+}
+
+// Overloaded << operator
+std::ostream &operator << (std::ostream &strm, const Polynomial &obj)
+{
+    bool firstTerm = true;
+    //std::string superScripts = "⁵⁴³²";
+    std::string superScripts = "5432";
+    std::string temp;
+    for (int i = 0; i < NUM_COEFFICIENTS; i++)
+    {
+        if (obj.coefficents[i])
+        {
+            //std::string superTemp = superScripts[i];
+            if (firstTerm)
+            {
+                temp += std::to_string(obj.coefficents[i]);
+                firstTerm = false;
+            }
+            else
+            {
+                temp += " ";
+                if (obj.coefficents[i] > 0)
+                {
+                    temp += "+";
+                }
+                else
+                {
+                    temp += "-";
+                }
+                temp += " ";
+                temp += std::to_string(std::abs(obj.coefficents[i]));
+            }
+            if (i < 4)
+            {
+                temp += "x^";
+                temp += superScripts[i];
+            }
+            else if (i == 4)
+            {
+                temp += "x";
+            }
+        }
+        
+    }
+    strm << temp;
+    // strm << obj.feet << " feet, " << obj.inches << " inches";
+    return strm;
 }
