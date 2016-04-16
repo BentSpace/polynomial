@@ -34,13 +34,19 @@
 #include "general.hpp"
 #include "polynomial.hpp"
 
+using std::cin;
 
 int main() {
     
-    Polynomial myPolynomial(-1,0,0,4,-5,6);
-    Polynomial myPolynomial2;
-    myPolynomial2 = myPolynomial;
-    //cout << "⁵⁴³²";
-    cout << myPolynomial2;
+    Polynomial myPolynomial(1,1,-1,2,0, 0);
+    Polynomial myPolynomial4(0,0,-1,2,0,-4);
+    Polynomial myPolynomial2(0,0,2,0,1,1);
+    Polynomial poly3 = myPolynomial2 * myPolynomial;
+    //cout << poly3;
+    //cout << (myPolynomial == myPolynomial4);
+    cin >> myPolynomial;
+    cout << myPolynomial << std::endl;
+    //cout << myPolynomial.evaluatePolynomialFor(2);
+    
     return 0;
 }

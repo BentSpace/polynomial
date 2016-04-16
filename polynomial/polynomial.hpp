@@ -41,8 +41,9 @@ class Polynomial;
 
 // Overloaded << operator
 std::ostream &operator << (std::ostream &, const Polynomial &);
+std::istream &operator >> (std::istream &, Polynomial &);
 
-static const int NUM_COEFFICIENTS = 6;
+static const int NUM_COEFFICIENTS = 11;
 
 class Polynomial
 {
@@ -59,12 +60,19 @@ public:// Everything following this is visible from the outside
     // Destructor
     ~Polynomial ();
     
-    // Overloaded = operator
+    // Overloaded operator functions
     void operator=(const Polynomial &);
+    Polynomial operator + (const Polynomial &); // Overloaded +
+    Polynomial operator - (const Polynomial &); // Overloaded −
+    Polynomial operator * (const Polynomial &); // Overloaded *
+    bool operator == (const Polynomial &); // Overloaded ==
     
     // Friends
     friend std::ostream &operator << (std::ostream &, const Polynomial &);
+    friend std::istream &operator >> (std::istream &, Polynomial &);
     
+    // Evalute polynomial at x
+    long long evaluatePolynomialFor(long long);
     
 private:
 
