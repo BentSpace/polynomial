@@ -26,7 +26,6 @@
 /* Begin PBXFileReference section */
 		4F1735771CBEF3DA0036673B /* polynomial */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = polynomial; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F17357A1CBEF3DA0036673B /* driver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = driver.cpp; sourceTree = "<group>"; };
-		4F1735811CC1668E0036673B /* general.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = general.hpp; sourceTree = "<group>"; };
 		4F1735821CC168A10036673B /* polynomial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = polynomial.hpp; sourceTree = "<group>"; };
 		4F1735831CC168C60036673B /* polynomial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = polynomial.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				4F17357A1CBEF3DA0036673B /* driver.cpp */,
-				4F1735811CC1668E0036673B /* general.hpp */,
 				4F1735821CC168A10036673B /* polynomial.hpp */,
 				4F1735831CC168C60036673B /* polynomial.cpp */,
 			);
@@ -245,6 +243,7 @@
 				4F1735801CBEF3DA0036673B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

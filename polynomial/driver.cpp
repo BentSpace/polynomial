@@ -2,22 +2,20 @@
  
  FILE NAME:         driver.cpp
  
- DESCRIPTION:       Driver program for the polynomial class
+ DESCRIPTION:       Driver program for testing the Polynomial class
  
- PURPOSE:           Describe the purpose for this file ...
+ PURPOSE:           To test functionality of Polynomial class
  
- USAGE:             Give instructions for running the program from the command
- line ...
+ USAGE:             type ./polynomial on the command line
  
- EXAMPLES:          Give examples of how to run the program ...
+ EXAMPLES:
  
- PARAMETERS:        List all command line parameters here and their purpose ...
+ PARAMETERS:        none
  
  EXIT CODES:        0 = Success
  Otherwise = Error
  
- COMPILATION:       Tell another programmer what tools development you used to
- build the .EXE
+ COMPILATION:       Built in Xcode, complied on Ubuntu with GNU g++
  
  NOTES:             None
  
@@ -25,28 +23,58 @@
  
  Author          Date           Modification(s)
  -------------   -----------    ---------------
- Nathan Bertram   04-15-2016     4.0
+ Nathan Bertram   04-15-2016     7.0
  
  ----------------------------------------------------------------------------- */
 
 #include <iostream>
 
-#include "general.hpp"
 #include "polynomial.hpp"
 
 using std::cin;
 
 int main() {
     
-    Polynomial myPolynomial(1,1,-1,2,0, 0);
-    Polynomial myPolynomial4(0,0,-1,2,0,-4);
-    Polynomial myPolynomial2(0,0,2,0,1,1);
-    Polynomial poly3 = myPolynomial2 * myPolynomial;
-    //cout << poly3;
-    //cout << (myPolynomial == myPolynomial4);
-    cin >> myPolynomial;
-    cout << myPolynomial << std::endl;
-    //cout << myPolynomial.evaluatePolynomialFor(2);
+    cout << "default constructor test" << endl;
+    Polynomial myPolynomial;
+    cout << "myPolynomial = " << myPolynomial << endl << endl;
+    
+    cout << "Overloaded constructor test" << endl;
+    Polynomial myPolynomial2(7,-5,2,0,1,1);
+    cout << "myPolynomial2 = " << myPolynomial2 << endl << endl;
+    
+    cout << "Copy constructor test" << endl;
+    Polynomial myPolynomial3 = myPolynomial2;
+    cout << "myPolynomial3 = " << myPolynomial3 << endl << endl;
+    
+    cout << "Overloaded = test" << endl;
+    myPolynomial = myPolynomial3;
+    cout << "myPolynomial = " << myPolynomial << endl << endl;
+    
+    cout << "Overloaded >> test" << endl;
+    Polynomial myPolynomial4;
+    cin >> myPolynomial4;
+    cout << "myPolynomial4 = " << myPolynomial4 << endl << endl;
+    
+    cout << "Overloaded + test" << endl;
+    myPolynomial = myPolynomial2 + myPolynomial3;
+    cout << "(" << myPolynomial2 <<  ") + (" << myPolynomial3 << ") = " << myPolynomial << endl << endl;
+    
+    cout << "Overloaded - test" << endl;
+    myPolynomial = myPolynomial2 - myPolynomial4;
+    cout << "(" << myPolynomial2 <<  ") - (" << myPolynomial4 << ") = " << myPolynomial << endl << endl;
+    
+    cout << "Overloaded * test" << endl;
+    myPolynomial = myPolynomial2 * myPolynomial4;
+    cout << "(" << myPolynomial2 <<  ") * (" << myPolynomial4 << ") = " << myPolynomial << endl << endl;
+    
+    cout << "Overloaded == test" << endl;
+    bool equal = myPolynomial2 == myPolynomial3;
+    cout << "(" << myPolynomial2 <<  ") is equal to (" << myPolynomial3 << ")? " << (equal ? "true" : "false") << endl << endl;
+    
+    cout << "Evaluation test" << endl;
+    long long ans = myPolynomial2.evaluatePolynomialFor(7);
+    cout << "(" << myPolynomial2 <<  ") when x = 7 is equal to : " << ans << endl << endl;
     
     return 0;
 }

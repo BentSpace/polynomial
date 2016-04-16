@@ -2,22 +2,14 @@
  
  FILE NAME:         polynomial.hpp
  
- DESCRIPTION:       Describe the this file ...
+ DESCRIPTION:       Header file for the Polynomial class
  
- PURPOSE:           Describe the purpose for this file ...
- 
- USAGE:             Give instructions for running the program from the command
- line ...
- 
- EXAMPLES:          Give examples of how to run the program ...
- 
- PARAMETERS:        List all command line parameters here and their purpose ...
+ PURPOSE:           Polynomial class defined here
  
  EXIT CODES:        0 = Success
  Otherwise = Error
  
- COMPILATION:       Tell another programmer what tools development you used to
- build the .EXE
+ COMPILATION:       Built in Xcode, complied on Ubuntu with GNU g++
  
  NOTES:             None
  
@@ -25,7 +17,7 @@
  
  Author          Date           Modification(s)
  -------------   -----------    ---------------
- Programmer      mm-dd-yyyy     Version number
+ Nathan Bertram   04-15-2016     7.0
  
  ----------------------------------------------------------------------------- */
 

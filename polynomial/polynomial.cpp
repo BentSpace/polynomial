@@ -1,23 +1,15 @@
 /* -----------------------------------------------------------------------------
  
- FILE NAME:         XXX.CPP
+ FILE NAME:         polynomial.cpp
  
- DESCRIPTION:       Describe the this file ...
+ DESCRIPTION:       Implementation file for the Polynomial class
  
- PURPOSE:           Describe the purpose for this file ...
- 
- USAGE:             Give instructions for running the program from the command
- line ...
- 
- EXAMPLES:          Give examples of how to run the program ...
- 
- PARAMETERS:        List all command line parameters here and their purpose ...
- 
+ PURPOSE:           member functions of the Polynomial class implemented here
+
  EXIT CODES:        0 = Success
  Otherwise = Error
  
- COMPILATION:       Tell another programmer what tools development you used to
- build the .EXE
+ COMPILATION:       Built in Xcode, complied on Ubuntu with GNU g++
  
  NOTES:             None
  
@@ -25,12 +17,11 @@
  
  Author          Date           Modification(s)
  -------------   -----------    ---------------
- Programmer      mm-dd-yyyy     Version number
+ Nathan Bertram   04-15-2016     7.0
  
  ----------------------------------------------------------------------------- */
 
 #include "polynomial.hpp"
-#include "general.hpp"
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -38,7 +29,13 @@
 using std::cin;
 using std::cout;
 
-// Default Constructor
+
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Polynomial()
+ DESCRIPTION:       Default Constructor
+ RETURNS:           A Polynomial object
+ NOTES:
+ ----------------------------------------------------------------------------- */
 Polynomial::Polynomial()
 {
     for (int i = 0; i < NUM_COEFFICIENTS; i++)
@@ -47,6 +44,12 @@ Polynomial::Polynomial()
     }
 }
 
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Polynomial()
+ DESCRIPTION:       Overloaded Constructor
+ RETURNS:           A Polynomial object
+ NOTES:
+ ----------------------------------------------------------------------------- */
 Polynomial::Polynomial(long long fifthDegreeCoefficient,
                        long long fourthDegreeCoefficient,
                        long long thirdDegreeCoefficient,
@@ -66,7 +69,13 @@ Polynomial::Polynomial(long long fifthDegreeCoefficient,
     }
 }
 
-// Copy Constructor
+
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Polynomial()
+ DESCRIPTION:       Copy Constructor
+ RETURNS:           A Polynomial object
+ NOTES:             For assigning another Polynomial object to a new Polynomial
+ ----------------------------------------------------------------------------- */
 Polynomial::Polynomial(const Polynomial &obj)
 {
     for (int i = 0; i < NUM_COEFFICIENTS; i++)
@@ -75,12 +84,23 @@ Polynomial::Polynomial(const Polynomial &obj)
     }
 }
 
-// Destructor
+
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Polynomial()
+ DESCRIPTION:       Destructor
+ RETURNS:
+ NOTES:             Not much to destroy since nothing dynamically allocated
+ ----------------------------------------------------------------------------- */
 Polynomial::~Polynomial()
 {
 }
 
-// Overloaded = operator
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded = operator()
+ DESCRIPTION:       Assigns values from Polynomial on right of = Polynomial on left
+ RETURNS:           Void function
+ NOTES:
+ ----------------------------------------------------------------------------- */
 void Polynomial::operator=(const Polynomial &right)
 {
     for (int i = 0; i < NUM_COEFFICIENTS; i++)
@@ -89,14 +109,20 @@ void Polynomial::operator=(const Polynomial &right)
     }
 }
 
-// Overloaded << operator
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded << operator()
+ DESCRIPTION:       Provides prettifying of object for print to screen with cout
+ RETURNS:           stream object
+ NOTES:
+ ----------------------------------------------------------------------------- */
 std::ostream &operator << (std::ostream &strm, const Polynomial &obj)
 {
     bool firstTerm = true;
     //std::string superScripts = "⁵⁴³²";
     //std::string superScripts = "5432";
+    //std::string superScripts [] = {"", "", "²", "³", "⁴", "⁵"};
     std::string temp;
-    for (int i = NUM_COEFFICIENTS; i >= 0; i--)
+    for (int i = NUM_COEFFICIENTS - 1; i >= 0; i--)
     {
         if (obj.coefficents[i])
         {
@@ -134,6 +160,7 @@ std::ostream &operator << (std::ostream &strm, const Polynomial &obj)
             {
                 temp += "x^";
                 temp += std::to_string(i);
+                //temp += superScripts[i];
             }
             else if (i == 1)
             {
@@ -142,11 +169,18 @@ std::ostream &operator << (std::ostream &strm, const Polynomial &obj)
         }
         
     }
+    if (temp == "")
+        temp = "0";
     strm << temp;
     return strm;
 }
 
-// Overloaded >> operator
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded >> operator()
+ DESCRIPTION:       Used to with to get values for a new Polynomial object from 
+                    the user
+ RETURNS:           stream object
+ ----------------------------------------------------------------------------- */
 std::istream &operator >> (std::istream &strm, Polynomial &obj)
 {
     std::string degrees [] = {"zeroth", "first", "second", "third", "fourth", "fifth"};
@@ -158,6 +192,11 @@ std::istream &operator >> (std::istream &strm, Polynomial &obj)
     return strm;
 }
 
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded + operator()
+ DESCRIPTION:       Used to add two Polynomial object
+ RETURNS:           A Polynomial object that is result of the addition
+ ----------------------------------------------------------------------------- */
 Polynomial Polynomial::operator + (const Polynomial &right)
 {
     Polynomial temp;
@@ -168,6 +207,11 @@ Polynomial Polynomial::operator + (const Polynomial &right)
     return temp;
 }
 
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded - operator()
+ DESCRIPTION:       Used to subtract two Polynomial object
+ RETURNS:           A Polynomial object that is result of the subtration
+ ----------------------------------------------------------------------------- */
 Polynomial Polynomial::operator - (const Polynomial &right)
 {
     Polynomial temp;
@@ -178,6 +222,11 @@ Polynomial Polynomial::operator - (const Polynomial &right)
     return temp;
 }
 
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded * operator()
+ DESCRIPTION:       Used to multiply two Polynomial object
+ RETURNS:           A Polynomial object that is result of the multiplication
+ ----------------------------------------------------------------------------- */
 Polynomial Polynomial::operator * (const Polynomial &right)
 {
     Polynomial temp;
@@ -191,6 +240,11 @@ Polynomial Polynomial::operator * (const Polynomial &right)
     return temp;
 }
 
+/* -----------------------------------------------------------------------------
+ FUNCTION:          Overloaded == operator()
+ DESCRIPTION:       Used to test equally of two Polynomial object
+ RETURNS:           A true of false bool
+ ----------------------------------------------------------------------------- */
 bool Polynomial::operator == (const Polynomial &right)
 {
     for (int i = 0; i < NUM_COEFFICIENTS; i++)
@@ -203,6 +257,12 @@ bool Polynomial::operator == (const Polynomial &right)
     return true;
 }
 
+/* -----------------------------------------------------------------------------
+ FUNCTION:          evaluatePolynomialFor()
+ DESCRIPTION:       Evaluates the Polynomial for when x is equal to the passed 
+                    in parameter
+ RETURNS:           A long long int that is the result of the evaluation
+ ----------------------------------------------------------------------------- */
 long long Polynomial::evaluatePolynomialFor(long long x)
 {
     long long accumulator = coefficents[0]; // Start accumulator at the zero degree term
